@@ -1,0 +1,27 @@
+//General colors
+$black: #000;
+$white: rgba(255,255,255,1);
+
+//Submit button initial colors
+$pwcalc-btn: rgba(51,122,183,1);
+$pwcalc-btn-border:rgba(46,109,164,1);
+$pwcalc-btn-focus: rgba(40,96,144,1);
+
+//Submit button success colors
+$pwcalc-successful-btn: rgba(51,122,183,1);
+
+//Submit button unsuccessful colors
+$pwcalc-unsuccessful-btn: rgba(51,122,183,1);
+
+//Dropdown colors
+$question-dropdown-border: rgba(227,227,227,1);
+$question-dropdown-border-focus: rgba(102,175,233,1);
+$option-hover:rgba(245,245,245,1);
+
+//Result box colors
+$rbox-back: #f5f5f5;
+$rbox-border: #ccc;
+
+//Loader colors
+$loader-back: #f5f5f5;
+$loader-spin: rgba(51,122,183,1);

@@ -1,0 +1,11 @@
+.btn-bscs {
+  background-color: $bscs-primary-02-80-percent;
+  border-color: $bscs-primary-02-80-percent;
+  color: $white;
+
+  &:hover {
+    background-color: $bscs-primary-02-90-percent;
+    border-color: $bscs-primary-02;
+    color: $white;
+  }
+}

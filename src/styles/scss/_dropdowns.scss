@@ -1,0 +1,74 @@
+.dropdown {
+  padding-bottom: 1rem;
+
+  > button {
+    background-color: $white;
+    border: 1px solid $question-dropdown-border;
+    border-radius: 4px;
+    height: 35px;
+    text-align: right;
+    width: 100%;
+
+    &:focus {
+      background-color: $white;
+      border: 1px solid $question-dropdown-border-focus;
+      outline: none;
+    }
+
+    &:hover {
+      background-color: $white;
+    }
+  }
+}
+
+.dropdown-list {
+  background-color: $white;
+  margin: 0;
+  padding: 0;
+
+  a {
+    text-decoration: none !important;
+    
+    &:hover {
+      background-color: $option-hover;
+      cursor: pointer;
+    }
+  }
+
+}
+
+.dropdown-menu {
+  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dropdown-item {
+  &:focus, &:hover {
+    background-color: $option-hover;
+    outline: none;
+  }
+}
+
+.dropdown-toggle {
+  margin-bottom: 1.5rem;
+  margin-top: -.5rem;
+
+  &::after {
+    border-top: 5px solid;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+  }
+}
+
+.hidden {
+  display: none;
+  transition: display 2s;
+}
+
+.reveal {
+  display: inherit;
+  transition: display 2s;
+}

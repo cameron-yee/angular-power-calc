@@ -1,0 +1,66 @@
+.nav-item {
+  font-size: 20px;
+  padding-top: .45rem;
+}
+
+.bscs-site-container {
+  padding: 1rem;
+}
+
+.navbar {
+  box-shadow: 0 8px 8px -8px $black;
+}
+
+.navbar-borders {
+  border-bottom: 1px solid $black-10-percent;
+  border-top: 1px solid $black-10-percent;
+}
+
+.no-navbar {
+  background-color: $nav-background-color;
+  border-bottom: 1px solid $black-10-percent;
+  box-shadow: 0 8px 8px -8px $black;
+  height: 54px;
+}
+
+.navbar-toggler {
+  margin: .4rem 0;
+}
+
+// Style the social buttons
+.header-social {
+  border-radius: 8rem;
+  bottom: 0;
+  display: inline-block;
+  font-size: 1.75rem;
+  opacity: .7;
+  position: absolute;
+  text-decoration: none;
+  width: 2rem;
+
+  &:hover {
+    opacity: 1;
+    transition: $link-transition;
+  }
+}
+
+.sociala {
+  // color: $global-font-color;
+
+  &:hover {
+    // color: $bscs-primary-02;
+    text-decoration: none;
+  }
+}
+
+.facebook {
+  right: 6rem;
+}
+
+.twitter {
+  right: 3.3rem;
+}
+
+.linkedin {
+  right: 0;
+}

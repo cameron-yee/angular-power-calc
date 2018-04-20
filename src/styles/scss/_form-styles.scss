@@ -1,0 +1,23 @@
+.ng-invalid {
+  &.ng-touched {
+    border-color: $bootstrap-form-validation-red;
+
+    &:focus {
+      box-shadow: 0 0 0 .2rem $bootstrap-form-validation-focused-red;
+    }
+
+    ~ .invalid-feedback {
+      display: block;
+    }
+  }
+}
+
+.ng-valid {
+  &.ng-touched {
+    border-color: $bootstrap-form-validation-green;
+
+    &:focus {
+      box-shadow: 0 0 0 .2rem $bootstrap-form-validation-focused-green;
+    }
+  }
+}
