@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { CopyrightComponent } from './copyright/copyright.component';
+import { IFrameResizeComponent } from './i-frame-resize/i-frame-resize.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { FooterComponent } from './footer/footer.component';
     routingComponents,
     HeaderComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CopyrightComponent,
+    IFrameResizeComponent
   ],
   imports: [
     BrowserModule,
