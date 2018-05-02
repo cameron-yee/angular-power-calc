@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterComponent } from './footer.component';
+import { IFrameResizeComponent } from './i-frame-resize.component';
 
-
-describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+describe('IFrameResizeComponent', () => {
+  let component: IFrameResizeComponent;
+  let fixture: ComponentFixture<IFrameResizeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
+      declarations: [ IFrameResizeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(IFrameResizeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
