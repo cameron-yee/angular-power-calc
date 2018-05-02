@@ -1,0 +1,18 @@
+.resultbox {
+  background-color: $rbox-back;
+  border: 1px solid $rbox-border;
+  border-radius: 4px;
+  color: $black;
+  display: block;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.42857143;
+  margin: 0 0 3.25rem;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.result-li {
+  margin: 1.25rem;
+}

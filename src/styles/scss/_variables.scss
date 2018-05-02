@@ -1,0 +1,101 @@
+$white: rgba(255, 255, 255, 1);
+$black: rgba(0, 0, 0, 1);
+$black-10-percent: rgba(0, 0, 0, .1);
+$black-50-percent: rgba(0, 0, 0, .5);
+$black-70-percent: rgba(0, 0, 0, .7);
+$black-90-percent: rgba(0, 0, 0, .9);
+$nav-and-footer-background-color: rgba(246, 246, 249, 1);
+$nav-and-footer-background-color-muted: rgba(246, 246, 249, .8);
+$primary-color: rgba(2, 117, 215, 1);
+
+$nav-background-color: #f7f7f7;
+
+$level-1-shadow-color-1: rgba(0, 0, 0, .16);
+$level-1-shadow-color-2: rgba(0, 0, 0, .12);
+$level-2-shadow-color-1: rgba(0, 0, 0, .18);
+$level-2-shadow-color-2: rgba(0, 0, 0, .15);
+$card-img-overlay: rgba(51, 51, 51, .85);
+
+$heading-color: #373a3c;
+$paragraph-color: #373a3c;
+$card-link-font-color: #373a3c;
+
+$bscs-primary-01: rgba(41, 52, 118, 1);
+$bscs-primary-02: rgba(48, 135, 180, 1);
+$bscs-primary-03: rgba(223, 229, 237, 1);
+$bscs-primary-04: rgba(253, 243, 231, 1);
+$bscs-primary-05: rgba(94, 60, 124, 1);
+
+$bscs-primary-02-90-percent: rgb(69, 147, 188);
+$bscs-primary-02-80-percent: rgb(89, 159, 195);
+$bscs-primary-02-70-percent: rgb(110, 171, 203);
+$bscs-primary-02-60-percent: rgb(131, 183, 210);
+
+$bscs-secondary-01: rgba(17, 151, 98, 1);
+$bscs-secondary-02: rgba(249, 131, 85, 1);
+$bscs-secondary-03: rgba(174, 37, 38, 1);
+
+$bscs-shade-01: rgba(76, 76, 76, 1);
+$bscs-shade-02: rgba(205, 205, 205, 1);
+
+$bootstrap-paragraph-gray: #292b2c;
+
+// Define Link Transition Timing
+$link-transition: .2s ease-in-out;
+
+// Define Global Font Color
+$global-font-color: #404040;
+$meta-color: #808080;
+
+// Bootstrap message colors
+$bootstrap-primary-font: #004085;
+$bootstrap-secondary-font: #464a4e;
+$bootstrap-success-font: #155724;
+$bootstrap-danger-font: #721c24;
+$bootstrap-warning-font: #856404;
+$bootstrap-info-font: #0c5460;
+$bootstrap-light-font: #818182;
+$bootstrap-dark-font: #1b1e21;
+
+$bootstrap-primary-background: #cce5ff;
+$bootstrap-secondary-background: #e7e8ea;
+$bootstrap-success-background: #d4edda;
+$bootstrap-danger-background: #f8d7da;
+$bootstrap-warning-background: #fff3cd;
+$bootstrap-info-background: #d1ecf1;
+$bootstrap-light-background: #fefefe;
+$bootstrap-dark-background: #d6d8d9;
+
+$bootstrap-primary-border: #b8daff;
+$bootstrap-secondary-border: #dddfe2;
+$bootstrap-success-border: #c3e6cb;
+$bootstrap-danger-border: #f5c6cb;
+$bootstrap-warning-border: #ffeeba;
+$bootstrap-info-border: #bee5eb;
+$bootstrap-light-border: #fdfdfd;
+$bootstrap-dark-border: #c6c8ca;
+
+$bootstrap-primary-link: #002752;
+$bootstrap-secondary-link: #2e3133;
+$bootstrap-success-link: #0b2e13;
+$bootstrap-danger-link: #491217;
+$bootstrap-warning-link: #533f03;
+$bootstrap-info-link: #062c33;
+$bootstrap-light-link: #686868;
+$bootstrap-dark-link: #040505;
+
+// $form-validation-green: #78fa89;
+$bootstrap-form-validation-green: #28a745;
+$bootstrap-form-validation-focused-green: rgba(40, 167, 69, .25);
+// $form-validation-read: #fa787e;
+$bootstrap-form-validation-red: #dc3545;
+$bootstrap-form-validation-focused-red: rgba(220, 53, 69, .25);
+
+$btn-primary-background-color: rgb(51, 122, 183);
+$btn-primary-border-color: rgb(46, 109, 164);
+
+$btn-primary-background-hover-color: #286090;
+$btn-primary-border-hover-color: #204d74;
+
+$btn-primary-background-active-color: #204d74;
+$btn-primary-border-active-color: #122b40;
