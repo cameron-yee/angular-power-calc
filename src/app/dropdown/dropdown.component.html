@@ -1,0 +1,35 @@
+<div class="col-12">
+  <h2>ICC</h2>
+</div>
+
+<div *ngFor="let value of iccvalues">
+  <div id="{{ value[0] }}">
+    <p>{{ value[1] }}</p>
+    <div class="dropdown">
+      <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span></span></button>
+      <div class="dropdown-menu" aria-labellby="dropdownMendivink">
+        <div class="dropdown-list">
+          <a *ngFor="let item of value[2];" class="dropdown-item">{{ item }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="r2">
+  <h2>R<sup>2</sup></h2>
+</div>
+
+<div *ngFor="let value of r2values">
+  <div id="{{ value[0] }}">
+    <p>{{ value[1] }}</p>
+    <div class="dropdown">
+      <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span></span></button>
+      <div class="dropdown-menu" aria-labellby="dropdownMendivink">
+        <div class="dropdown-list">
+          <a *ngFor="let item of value[2];" class="dropdown-item">{{ item }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

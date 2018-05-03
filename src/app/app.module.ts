@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { IFrameResizeComponent } from './i-frame-resize/i-frame-resize.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { IFrameResizeComponent } from './i-frame-resize/i-frame-resize.component
     NavbarComponent,
     FooterComponent,
     CopyrightComponent,
-    IFrameResizeComponent
+    IFrameResizeComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -29,3 +31,4 @@ import { IFrameResizeComponent } from './i-frame-resize/i-frame-resize.component
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+
