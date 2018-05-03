@@ -1,61 +1,60 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ElementRef, Renderer2, ViewChild, ViewChildren, QueryList} from '@angular/core';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent implements AfterViewInit {
+  @ViewChild('textspan') textspan: any;
+  @ViewChildren('dropdownitem') dropdown_items_query: QueryList<any>;
 
-  constructor() { }
+  constructor(private rd: Renderer2) { }
+
+  @Input() id: string;
+  @Input() p?: string;
+  @Input() items: Array<any>;
+
 
   ngOnInit() {
   }
 
-  iccvalues = [
-    [
-      'icc-grades',
-      'Do you plan on using a 2-level <sup><a href="" data-toggle="tooltip" data-placement="top" title="A 2 level impact model is ..."><i class="fa fa-info-circle" aria-hidden="true"></i></a></sup> or <a href="" data-toggle="tooltip" data-placement="top" title="A 3 level impact model is ...">3-level</i></a> impact model?',
-      ['2-level', '3-level'],
-    ],
-    [
-      'icc-state',
-      'Which state are you from?',
-      ['Michigan', 'Texas', 'Wisconsin'],
-    ],
-    [
-      'icc-grades',
-      'What grades are you teaching?',
-      [4, 5, 6, 7, 8, 9, 10, 11],
-    ],
-  ];
+  ngAfterViewInit() {
+    let setSelection: any = (item_id) => {
+      console.log('item_id: ' + item_id);
+      let item: any = document.getElementById(item_id);
+      console.log('item: ' + item);
+      let item_text: string = item.text;
+      console.log('item_text: ' + item_text);
+      let span_id: string = item_id.slice(0, -1) + 'span';
+      console.log('span_id: ' + span_id);
+      let span: any = document.getElementById(span_id);
+      console.log('span: ' + span);
+      span.text = item_text;
+    }
 
-  r2values = [
-    [
-      'r2-covariate',
-      'What type of covariate are you using?',
-      ['Demo Only', 'School Level Pretest', 'Individual Level Pretest']
-    ],
-    [
-      'r2-domain',
-      'What domain?',
-      ['Math', 'Reading', 'Science']
-    ],
-    [
-      'r2-impact',
-      'Do you plan on using a 2-level or 3-level impact model?',
-      ['2-level', '3-level']
-    ],
-    [
-      'r2-state',
-      'Which state are you from?',
-      ['Michigan', 'Texas', 'Wisconsin']
-    ],
-    [
-      'r2-grades',
-      'What grades are you teaching?',
-      [4,5,6,7,8,9,10,11]
-    ]
-  ];
+    let test: any = () => {
+      console.log(1 + 1);
+    }
+
+    console.log(this.textspan);
+    // @ViewChild(id + '-span');
+
+    for(let i = 0; i < this.dropdown_items_query.length; i++) {
+      this.dropdown_items_query.toArray()[i].nativeElement.addEventListener('click', test);
+      //setSelection(this.dropdown_items_query.toArray()[i].nativeElement.id)
+    }
+
+    let dropdown_items: Array<any> = [];
+    for(let i = 0; i < this.dropdown_items_query.length; i++) {
+      let item_id = this.dropdown_items_query.toArray()[i].nativeElement.id;
+      console.log(item_id);
+      // dropdown_items.push(item_id);
+      // let item = document.getElementById(item_id);
+      // item.addEventListener('click', setSelection(item))
+    }
+    console.log(dropdown_items);
+
+      
+  }
 }
