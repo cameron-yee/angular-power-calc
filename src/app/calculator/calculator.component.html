@@ -14,8 +14,8 @@
       <div>
         <h2>ICC</h2>
       </div>
-
-      <p>Do you plan on using a 2-level <sup><a href="" data-toggle="tooltip" data-placement="top" title="A 2 level impact model is ..."><i class="fa fa-info-circle" aria-hidden="true"></i></a></sup> or a 3-level <sup><a href="" data-toggle="tooltip" data-placement="top" title="A 3 level impact model is ..."><i class="fa fa-info-circle" aria-hidden="true"></i></a></sup> impact model?</p>
+      <!--Begin Dropdown Section-->
+      <p>Do you plan on using a 2-level <sup><a data-toggle="tooltip" data-placement="top" title="A 2 level impact model is ..."><i class="fa fa-info-circle" aria-hidden="true"></i></a></sup> or a 3-level <sup><a data-toggle="tooltip" data-placement="top" title="A 3 level impact model is ..."><i class="fa fa-info-circle" aria-hidden="true"></i></a></sup> impact model?</p>
       <app-dropdown id="icc-impact" [items]="['2-level', '3-level']"></app-dropdown>
       <app-dropdown id="icc-state" p="Which state are you from?" [items]="['Michigan','Texas','Wisconsin']"></app-dropdown>
       <app-dropdown id="icc-grades" p="What grades are you teaching?" [items]="[4,5,6,7,8,9,10,11]"></app-dropdown>
@@ -30,5 +30,10 @@
       <app-dropdown id="r2-state" p="Which state are you from?" [items]="['Michigan','Texas','Wisconsin']"></app-dropdown>
       <app-dropdown id="r2-grades" p="What grades are you teaching?" [items]="[4,5,6,7,8,9,10,11]"></app-dropdown>
     </div>
+    <!--End Section-->
+    <div class="col-xs-12 col-md-8">
+      <app-results-box></app-results-box>
+    </div>
+    <app-submit-button></app-submit-button>
   </div>
 </div>

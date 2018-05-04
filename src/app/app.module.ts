@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { IFrameResizeComponent } from './i-frame-resize/i-frame-resize.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { SubmitButtonComponent } from './submit-button/submit-button.component';
+import { ResultsBoxComponent } from './results-box/results-box.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     FooterComponent,
     CopyrightComponent,
     IFrameResizeComponent,
-    DropdownComponent
+    DropdownComponent,
+    SubmitButtonComponent,
+    ResultsBoxComponent
   ],
   imports: [
     BrowserModule,
