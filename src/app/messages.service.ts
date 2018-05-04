@@ -2,15 +2,13 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class MessagesService {
-  private values: any[] = [];
+  private values: Object = {};
   private messages: string[] = [];
+  private icc_message_values: string[] = [];
+  private r2_message_values: string[] = [];
 
   pushValue(key, value) {
-    console.log(this.values);
-    console.log(key);
-    console.log(value);
-    this.values.push({key, value});
-    console.log(this.values);
+    this.values[key] = value;
   }
 
   setValues(values) {
@@ -19,6 +17,22 @@ export class MessagesService {
 
   getValues() {
     return this.values;
+  }
+
+  setIccMessageValues(icc_message_values) {
+    this.icc_message_values = icc_message_values;
+  }
+
+  getIccMessageValues() {
+    return this.icc_message_values;
+  }
+
+  setR2MessageValues(r2_message_values) {
+    this.r2_message_values = r2_message_values;
+  }
+
+  getR2MessageValues() {
+    return this.r2_message_values;
   }
 
   setMessages(messages) {
