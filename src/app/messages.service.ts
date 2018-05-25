@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class MessagesService {
   private values: Object = {};
-  private messages: string[] = [];
-  private icc_message_values: string[] = [];
-  private r2_message_values: string[] = [];
+  private icc_messages: string[] = [];
+  private r2_messages: string[] = []
+  private clicked: boolean = false;
+  // public clicked$: Observable<boolean> = Observable.of(true);
 
   pushValue(key, value) {
     this.values[key] = value;
@@ -19,27 +21,47 @@ export class MessagesService {
     return this.values;
   }
 
-  setIccMessageValues(icc_message_values) {
-    this.icc_message_values = icc_message_values;
+  setIccMessages(icc_messages) {
+    this.icc_messages = icc_messages;
   }
 
-  getIccMessageValues() {
-    return this.icc_message_values;
+  getIccMessages() {
+    return this.icc_messages;
   }
 
-  setR2MessageValues(r2_message_values) {
-    this.r2_message_values = r2_message_values;
+  setr2Messages(r2_messages) {
+    this.r2_messages = r2_messages;
   }
 
-  getR2MessageValues() {
-    return this.r2_message_values;
+  getr2Messages() {
+    return this.r2_messages;
   }
 
-  setMessages(messages) {
-    this.messages = messages;    
+  setClicked() {
+    this.clicked = true;
   }
 
-  getMessages() {
-    return this.messages;
+  getClicked() {
+    return this.clicked;
   }
+
+  // getIccMessageValues() {
+  //   return this.icc_message_values;
+  // }
+
+  // setR2MessageValues(r2_message_values) {
+  //   this.r2_message_values = r2_message_values;
+  // }
+
+  // getR2MessageValues() {
+  //   return this.r2_message_values;
+  // }
+
+  // setMessages(messages) {
+  //   this.messages = messages;    
+  // }
+
+  // getMessages() {
+  //   return this.messages;
+  // }
 }

@@ -2,8 +2,8 @@
 <div class="resultbox">
   <p>The result is:</p>
   <ul style="list-style: none;">
-    <li class="result-li">{{ message }}</li>
-    <li class="result-li">{{ message }}</li>
+    <li class="result-li" *ngFor="let message of im">{{ message }}</li>
+    <li class="result-li" *ngFor="let message of rm">{{ message }}</li>
   </ul>
 </div>
 <p style="font-size: 14px; color: #737373;">Citation: </p>

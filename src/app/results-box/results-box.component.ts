@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MessagesService } from '../messages.service';
 
 @Component({
@@ -14,13 +14,21 @@ export class ResultsBoxComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    let icc_message_values: string[] = this.messagesService.getIccMessageValues();
-    let r2_message_values: string[] = this.messagesService.getR2MessageValues();
-    console.log(icc_message_values);
-    console.log(r2_message_values);
-
-    let displayMessages = (icc_message_values, r2_message_values) => {
-      
+    let displayMessages = () => {
+      let clicked: boolean = this.messagesService.getClicked();
+      if(clicked) {
+        let icc_messages: string[] = this.messagesService.getIccMessages();
+        let r2_messages: string[] = this.messagesService.getr2Messages();
+        this.im = icc_messages;
+        this.rm = r2_messages;
+      }
     }
+
+    // this.submit.nativeElement.addEventListener('click', displayMessages);
+    document.body.addEventListener('click', displayMessages);
   }
+
+  //icc_messsages and r2_messages attribute
+  im: string[] = [];
+  rm: string[] = [];
 }
