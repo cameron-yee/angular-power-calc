@@ -6,6 +6,7 @@ export class DropdownService {
   private r2_state: string;
   private icc_grades: string[];
   private r2_grades: string[];
+  private show_domain: boolean = false;
 
   setIccState(state: string) {
     this.icc_state = state;
@@ -37,5 +38,13 @@ export class DropdownService {
 
   getr2Grades() {
     return this.r2_grades;
+  }
+
+  hideDomain(show_domain: boolean) {
+    this.show_domain = show_domain;
+  }
+
+  gethideDomain() {
+    return this.show_domain;
   }
 }

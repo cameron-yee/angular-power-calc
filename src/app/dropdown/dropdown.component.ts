@@ -10,7 +10,6 @@ import { MessagesService } from '../messages.service';
 export class DropdownComponent implements AfterViewInit {
   //Gets list of dropdown items and span item for each dropdown
   @ViewChild('textspan') textspan: any;
-  @ViewChild('dropdowncomponent') dropdown_component: any;
   @ViewChildren('dropdownitem') dropdown_items_query: QueryList<any>;
 
   constructor(private messagesService: MessagesService) { }

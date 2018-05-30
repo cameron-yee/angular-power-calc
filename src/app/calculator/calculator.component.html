@@ -1,16 +1,18 @@
-<div class="container main-content-container" style="margin-top: 4rem;">
-  <!-- <div class="row">
+<div class="container-fluid main-content-container" style="margin-top: 4rem;">
+  <div class="row">
     <div class="col-12">
       <div id="load-spinner" class="loader mx-auto" style="margin: 3rem 0 20rem;"></div>
     </div>
-  </div> -->
-  <div id="section-1" class="row" style="margin-bottom: 2rem;">
+  </div>
+  <div id="section-1" class="row invisible" style="margin-bottom: 2rem;">
     <div class="col">
       <app-i-frame-resize></app-i-frame-resize>
     </div>
   </div>
-  <div id="section-2" class="row">
+  <div id="section-2" class="row i-frame-padding invisible">
     <div class="col-xs-12 col-md-4">
+      <app-submit-button></app-submit-button>
+      <br>
       <div>
         <h2>ICC</h2>
       </div>
@@ -34,6 +36,5 @@
     <div class="col-xs-12 col-md-8">
       <app-results-box></app-results-box>
     </div>
-    <app-submit-button></app-submit-button>
   </div>
 </div>
