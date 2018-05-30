@@ -5,7 +5,7 @@ import { MessagesService } from '../messages.service';
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css'],
-  providers: [MessagesService]
+  // providers: [MessagesService]
 })
 export class DropdownComponent implements AfterViewInit {
   //Gets list of dropdown items and span item for each dropdown

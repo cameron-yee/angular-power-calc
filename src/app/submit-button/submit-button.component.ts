@@ -535,12 +535,22 @@ export class SubmitButtonComponent implements OnInit {
         let icc_messages: string[] = [];
         let r2_messages: string[] = [];
         for(let i: any = 0; i < icc_messages_values.length; i++) {
-          let icc_message: string = `${icc_grades}th Grade ${icc_state} ICC: ${eval(icc_messages_values[i])}`;
+          let icc_message: string;
+          if(eval(icc_messages_values[i]) == undefined) {
+            icc_message = `There is no data for ${icc_grades}th Grade ${icc_state} ICC`
+          } else {
+            icc_message = `${icc_grades}th Grade ${icc_state} ICC: ${eval(icc_messages_values[i])}`;
+          }
           console.log(icc_message);
           icc_messages[i] = icc_message;
         }
         for(let i: any = 0; i < r2_messages_values.length; i++) {
-          let r2_message: string = `${icc_grades}th Grade ${r2_state} r2: ${eval(r2_messages_values[i])}`;
+          let r2_message: string;
+          if(eval(r2_messages_values[i]) == undefined) {
+            r2_message = `There is no data for ${r2_grades}th Grade ${r2_state} r2`
+          } else {
+            r2_message = `${icc_grades}th Grade ${r2_state} r2: ${eval(r2_messages_values[i])}`;
+          }
           console.log(r2_message);
           // let end: string = eval(r2_messages_values[i]);
           // let r2_message = beg + end;
@@ -552,7 +562,7 @@ export class SubmitButtonComponent implements OnInit {
         // this.messagesService.clicked = true;
         console.log(r2_messages);
         let lookup = eval('r2_messages_values[0]');
-        console.log(eval('this. + eval(lookup)'))
+        // console.log(eval('this. + eval(lookup)'))
       } catch(TypeError) {
         console.log(TypeError);
       }
