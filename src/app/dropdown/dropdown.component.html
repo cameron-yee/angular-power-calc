@@ -1,10 +1,10 @@
-<div id="{{ id }}">
+<div id="{{ id }}" #dropdowncomponent>
   <p>{{ p }}</p>
   <div class="dropdown">
     <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span #textspan></span></button>
     <div class="dropdown-menu" aria-labellby="dropdownMendivink">
       <div class="dropdown-list">
-        <a *ngFor="let item of items; let i = index;" id="{{ id + '-' + i }}" id class="dropdown-item" #dropdownitem>{{ item }}</a>
+        <a *ngFor="let item of items; let i = index;" id="{{ id + '-' + i }}" class="dropdown-item" #dropdownitem>{{ item }}</a>
       </div>
     </div>
   </div>

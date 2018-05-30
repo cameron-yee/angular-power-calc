@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 export class DropdownService {
   private icc_state: string;
   private r2_state: string;
-  private icc_grades: string[] = ['4','5','6','7','8','9','10','11'];
-  private r2_grades: string[] = ['4','5','6','7','8','9','10','11'];
+  private icc_grades: string[];
+  private r2_grades: string[];
 
   setIccState(state: string) {
     this.icc_state = state;
