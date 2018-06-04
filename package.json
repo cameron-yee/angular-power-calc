@@ -45,6 +45,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.1",
     "gulp-uglify-es": "^1.0.1",
+    "hoek": "^5.0.3",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
