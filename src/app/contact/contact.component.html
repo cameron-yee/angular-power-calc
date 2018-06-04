@@ -22,10 +22,11 @@
       <div class="alert alert-danger" role="alert" ng-show="errorMessage">
         {{ errorMessage }}
       </div>
-      <form name="contactForm" onsubmit="parent.scrollTo(0, 0); return true" ng-submit="contactForm.$valid && processContactForm()" novalidate>
+      <!-- binding component attribute -->
+      <form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value)">
         <div class="form-group">
           <label for="firstName">First name</label>
-          <input class="form-control" id="firstName" placeholder="" ng-model="formData.firstName" required>
+          <input class="form-control" id="firstName" placeholder="" [formControl]="contactForm.controls['firstName']" required>
           <div class="invalid-feedback">
             Please provide a first name.
           </div>
@@ -33,7 +34,7 @@
 
         <div class="form-group">
           <label for="lastName">Last name</label>
-          <input class="form-control" id="lastName" placeholder="" ng-model="formData.lastName" required>
+          <input class="form-control" id="lastName" placeholder="" [formControl]="contactForm.controls['lastName']" required>
           <div class="invalid-feedback">
             Please provide a last name.
           </div>
@@ -41,7 +42,7 @@
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="" ng-model="formData.email" required>
+          <input type="email" class="form-control" id="email" placeholder="" [formControl]="contactForm.controls['email']" required>
           <div class="invalid-feedback">
             Please provide a valid email address.
           </div>
@@ -49,7 +50,7 @@
 
         <div class="form-group">
           <label for="verifyEmail">Please verify your email address</label>
-          <input type="email" class="form-control" id="verifyEmail" placeholder="" ng-model="formData.verifyEmail" required>
+          <input type="email" class="form-control" id="verifyEmail" placeholder="" [formControl]="contactForm.controls['verifyEmail']" required>
           <div class="invalid-feedback">
             Please provide a valid email address.
             <br>
@@ -59,13 +60,13 @@
 
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea class="form-control" id="message" rows="10" ng-model="formData.message" required></textarea>
+          <textarea class="form-control" id="message" rows="10" ng-model="formData.message" [formControl]="contactForm.controls['message']" required></textarea>
           <div class="invalid-feedback">
             Please provide a message.
           </div>
         </div>
 
-        <button type="submit" value="Submit" class="btn btn-bscs form-submit">Submit</button>
+        <button type="submit" value="Submit" class="btn btn-bscs form-submit" [disabled]="!contactForm.valid">Submit</button>
 
         <!-- {{ contactForm.$valid }}
         {{ formData.firstName }}
