@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fbind } from 'q';
 import { AbstractClassPart } from '@angular/compiler/src/output/output_ast';
+// import { emailMatch } from './../email-match';
 
 @Component({
   selector: 'app-contact',
@@ -9,16 +10,19 @@ import { AbstractClassPart } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
+  @ViewChild('verifyemail') verify_email: any;
 
   contactForm : FormGroup;
 
-  constructor(fb: FormBuilder) { 
+  constructor(fb: FormBuilder) {
 
     this.contactForm = fb.group({
       'firstName' : [null, Validators.required],
       'lastName' : [null, Validators.required],
-      'email' : [null, Validators.required, Validators.email],
-      'verifyEmail' : [null, Validators.required, Validators.email],
+      email_group: fb.group({
+        'email' : [null, [Validators.required, Validators.email]],
+        'verifyEmail' : [null, [Validators.required, Validators.email]],
+      }, {validator: this.emailMatch}),
       'message' : [null, Validators.required]
     });
   }
@@ -27,6 +31,22 @@ export class ContactComponent {
     console.log('Form Data: ');
     console.log(form);
   }
+
+  emailMatch(control: AbstractControl): {[key: string]: boolean} {
+      const email = control.get('email');
+      const confirm_email = control.get('verifyEmail');
+      console.log(email, confirm_email);
+
+      if(email.value === confirm_email.value) {
+        return null;
+      }
+
+      // this.verify_email.nativeElement.classList += 'ng-invalid';
+      if(confirm_email.touched === true) {
+        confirm_email.setErrors({'invalid': true});
+      }
+      return {invalid: true};
+    }
 
 successMessage = "Your message has been received!";
 // errorFirstName = response.errors.firstName;
