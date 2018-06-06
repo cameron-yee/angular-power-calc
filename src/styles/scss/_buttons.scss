@@ -15,11 +15,20 @@
 .btn-primary {
   background-color: $btn-primary-background;
   border-color: $btn-primary-border;
-  color: $white;
 
   &:hover {
     background-color: $btn-primary-background-hover;
     border-color: $btn-primary-border-hover;
-    color: $white;
+  }
+
+  &:disabled {
+    background-color: $btn-primary-background;
+    border-color: $btn-primary-border;
+    opacity: .5;
+
+    &:hover {
+      background-color: $btn-primary-background;
+      border-color: $btn-primary-border;
+    }
   }
 }
