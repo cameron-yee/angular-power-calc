@@ -15,8 +15,6 @@ export class SubmitButtonComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-
-    let messages = () => {
       const table4 = {
           michigan: {
               grade5icc: 0.261,
@@ -45,7 +43,7 @@ export class SubmitButtonComponent implements OnInit {
               grade10se: 0.013,
           },
       };
-
+      
       const table5 = {
           michigan: {
               grade5iccl2: 0.076,
@@ -498,18 +496,15 @@ export class SubmitButtonComponent implements OnInit {
               },
           },
       };
+
+    let r2Messages = () => {
       try {
         let values: Object = this.messagesService.getValues();
-        let icc_impact: string = values['icc-impact'];
-        let icc_state: string = values['icc-state'];
-        let icc_grades: string = values['icc-grades'];
         let r2_covariate: string = values['r2-covariate'];
         let r2_impact: string = values['r2-impact'];
         let r2_domain: string = values['r2-domain'];
         let r2_state: string = values['r2-state'];
         let r2_grades: string = values['r2-grades'];
-
-        let icc_messages_values: string[] = (icc_impact === '2-level') ? [`table4.${icc_state.toLowerCase()}.grade${icc_grades}icc`] : [`table5.${icc_state.toLowerCase()}.grade${icc_grades}iccl2`,`table5.${icc_state.toLowerCase()}.grade${icc_grades}iccl3`];
 
         let r2_messages_values: string[] = [];
 
@@ -532,8 +527,35 @@ export class SubmitButtonComponent implements OnInit {
             r2_messages_values = [`table8.threelevelhlm.${r2_state.toLowerCase()}.${r2_domain.toLowerCase()}.grade${r2_grades}r2l1`,`table8.threelevelhlm.${r2_state.toLowerCase()}.${r2_domain.toLowerCase()}.grade${r2_grades}r2l2`,`table8.threelevelhlm.${r2_state.toLowerCase()}.${r2_domain.toLowerCase()}.grade${r2_grades}r2l3`];
           }
         }
-        let icc_messages: string[] = [];
+
         let r2_messages: string[] = [];
+
+        for(let i: any = 0; i < r2_messages_values.length; i++) {
+          let r2_message: string;
+          if(eval(r2_messages_values[i]) == undefined) {
+            r2_message = `There is no data for ${r2_grades}th Grade ${r2_state} r2`
+          } else {
+            r2_message = `${r2_grades}th Grade ${r2_state} r2: ${eval(r2_messages_values[i])}`;
+          }
+          r2_messages[i] = r2_message;
+        }
+
+        this.messagesService.setr2Messages(r2_messages);
+      } catch(TypeError) {
+        console.log(TypeError);
+      }
+    }
+
+    let iccMessages = () => {
+      try {
+        let values: Object = this.messagesService.getValues();
+        let icc_impact: string = values['icc-impact'];
+        let icc_state: string = values['icc-state'];
+        let icc_grades: string = values['icc-grades'];
+
+        let icc_messages_values: string[] = (icc_impact === '2-level') ? [`table4.${icc_state.toLowerCase()}.grade${icc_grades}icc`] : [`table5.${icc_state.toLowerCase()}.grade${icc_grades}iccl2`,`table5.${icc_state.toLowerCase()}.grade${icc_grades}iccl3`];
+
+        let icc_messages: string[] = [];
         for(let i: any = 0; i < icc_messages_values.length; i++) {
           let icc_message: string;
           if(eval(icc_messages_values[i]) == undefined) {
@@ -543,24 +565,13 @@ export class SubmitButtonComponent implements OnInit {
           }
           icc_messages[i] = icc_message;
         }
-        for(let i: any = 0; i < r2_messages_values.length; i++) {
-          let r2_message: string;
-          if(eval(r2_messages_values[i]) == undefined) {
-            r2_message = `There is no data for ${r2_grades}th Grade ${r2_state} r2`
-          } else {
-            r2_message = `${icc_grades}th Grade ${r2_state} r2: ${eval(r2_messages_values[i])}`;
-          }
-          r2_messages[i] = r2_message;
-        }
         this.messagesService.setIccMessages(icc_messages);
-        this.messagesService.setr2Messages(r2_messages);
-        this.messagesService.setClicked();
         // let lookup = eval('r2_messages_values[0]');
       } catch(TypeError) {
         console.log(TypeError);
       }
     }
 
-    this.submit.nativeElement.addEventListener('click', messages);
+    this.submit.nativeElement.addEventListener('click', () => {iccMessages(), r2Messages(), this.messagesService.setClicked()});
   }
 }
