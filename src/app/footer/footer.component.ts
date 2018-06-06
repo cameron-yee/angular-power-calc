@@ -11,7 +11,7 @@ export class FooterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.contact.nativeElement.addEventListener('click', function() {window.scroll(0,0)});
+    this.contact.nativeElement.addEventListener('click', function() {window.scroll(0,180)});
   }
 
 }

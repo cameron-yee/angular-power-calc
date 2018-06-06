@@ -10,7 +10,7 @@ import { AbstractClassPart } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
-  @ViewChild('verifyemail') verify_email: any;
+  @ViewChild('success') success: any;
 
   contactForm : FormGroup;
 
@@ -27,26 +27,34 @@ export class ContactComponent {
     });
   }
 
-  submitForm(form: any): void{
+  ngAfterViewInit() {}
+
+  showSuccessMessage = () => {
+    window.scroll(0, 180);
+    this.success.nativeElement.classList.remove('hidden');
+    this.success.nativeElement.classList.add('show');
+  }
+
+  submitForm(form: any): void {
     console.log('Form Data: ');
     console.log(form);
+    console.log(form.email_group['email']);
+    this.showSuccessMessage();
   }
 
   emailMatch(control: AbstractControl): {[key: string]: boolean} {
-      const email = control.get('email');
-      const confirm_email = control.get('verifyEmail');
-      console.log(email, confirm_email);
+    const email = control.get('email');
+    const confirm_email = control.get('verifyEmail');
+    console.log(email, confirm_email);
 
-      if(email.value === confirm_email.value) {
-        return null;
-      }
-
-      // this.verify_email.nativeElement.classList += 'ng-invalid';
-      if(confirm_email.touched === true) {
-        confirm_email.setErrors({'invalid': true});
-      }
-      return {invalid: true};
+    if(email.value === confirm_email.value) {
+      return null;
     }
+    // this.verify_email.nativeElement.classList += 'ng-invalid';
+    confirm_email.setErrors({'invalid': true});
+    return {invalid: true};
+  }
+
 
 successMessage = "Your message has been received!";
 // errorFirstName = response.errors.firstName;

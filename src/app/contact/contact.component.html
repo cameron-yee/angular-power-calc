@@ -3,27 +3,27 @@
 
     <h2>Send Us a Message</h2>
     <hr />
-    <div class="contact-form" ng-controller="ContactController as contactCtrl">
-      <div class="alert alert-success" role="alert" ng-show="successMessage">
+    <div class="contact-form">
+      <div class="alert alert-success hidden" role="alert" #success>
         {{ successMessage }}
       </div>
-      <div class="alert alert-danger" role="alert" ng-show="errorFirstName">
+      <!-- <div *ngIf="firstName.invalid" class="alert alert-danger" role="alert">
         {{ errorFirstName }}
       </div>
-      <div class="alert alert-danger" role="alert" ng-show="errorLastName">
+      <div class="alert alert-danger" role="alert">
         {{ errorLastName }}
       </div>
-      <div class="alert alert-danger" role="alert" ng-show="errorEmail">
+      <div class="alert alert-danger" role="alert">
         {{ errorEmail }}
       </div>
-      <div class="alert alert-danger" role="alert" ng-show="errorValidateEmail">
+      <div class="alert alert-danger" role="alert">
         {{ errorValidateEmail }}
       </div>
-      <div class="alert alert-danger" role="alert" ng-show="errorMessage">
+      <div class="alert alert-danger" role="alert">
         {{ errorMessage }}
-      </div>
+      </div> -->
       <!-- binding component attribute -->
-      <form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value)">
+      <form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value) && showSuccessMessage()">
         <div class="form-group">
           <label for="firstName">First name</label>
           <input class="form-control" id="firstName" placeholder="" formControlName="firstName">

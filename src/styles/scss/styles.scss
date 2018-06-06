@@ -41,8 +41,18 @@
 
 .invisible {
   visibility: hidden;
+  transition: visibility 10s;
 }
 
 .visible {
   visibility: visible;
+  transition: visibility 10s;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: inherit;
 }
