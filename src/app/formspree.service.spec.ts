@@ -1,11 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { FormspreeService } from './formspree.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('FormspreeService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [FormspreeService]
+      providers: [FormspreeService],
+      imports: [
+        HttpClientModule
+      ]
     });
   });
 

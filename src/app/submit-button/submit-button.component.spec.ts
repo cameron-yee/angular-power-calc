@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubmitButtonComponent } from './submit-button.component';
+import { MessagesService } from '../messages.service';
 
 describe('SubmitButtonComponent', () => {
   let component: SubmitButtonComponent;
@@ -8,7 +9,8 @@ describe('SubmitButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubmitButtonComponent ]
+      declarations: [ SubmitButtonComponent ],
+      providers: [MessagesService]
     })
     .compileComponents();
   }));

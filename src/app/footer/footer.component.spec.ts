@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
+import { CopyrightComponent } from '../copyright/copyright.component';
+import { NgModule } from '@angular/core';
 
 
 describe('FooterComponent', () => {
@@ -9,7 +11,8 @@ describe('FooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
+      declarations: [ FooterComponent, CopyrightComponent],
+      imports: []
     })
     .compileComponents();
   }));

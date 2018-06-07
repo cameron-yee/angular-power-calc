@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
 
 
 import { AppRoutingModule, routingComponents } from './/app-routing.module';
@@ -31,12 +32,12 @@ import { ResultsBoxComponent } from './results-box/results-box.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

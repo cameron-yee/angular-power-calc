@@ -1,12 +1,23 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, NgModule } from '@angular/core';
 import { MessagesService } from '../messages.service';
 import { DropdownService } from '../dropdown.service';
+import { SubmitButtonComponent } from '../submit-button/submit-button.component';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { IFrameResizeComponent } from '../i-frame-resize/i-frame-resize.component';
 
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.css'],
   providers: [MessagesService, DropdownService]
+})
+
+@NgModule({
+  imports: [
+    SubmitButtonComponent,
+    DropdownComponent,
+    IFrameResizeComponent,
+  ]
 })
 export class CalculatorComponent implements AfterViewInit {
 
