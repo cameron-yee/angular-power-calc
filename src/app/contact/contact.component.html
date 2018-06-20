@@ -26,7 +26,7 @@
         {{ errorMessage }}
       </div> -->
       <!-- binding component attribute -->
-      <form action="https://formspree.io/info@bscs.org" [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value) && showSuccessMessage()">
+      <form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value) && showSuccessMessage()">
         <div class="form-group">
           <label for="firstName">First name</label>
           <input class="form-control" id="firstName" placeholder="" formControlName="firstName">
