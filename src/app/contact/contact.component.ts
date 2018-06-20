@@ -47,8 +47,8 @@ export class ContactComponent {
 
   submitForm(form: any): void {
     this.formspree.setEmail(form.email_group['email']);
-    this.formspree.setfn(form['firstName']);
-    this.formspree.setln(form['lastName']);
+    this.formspree.setFirstName(form['firstName']);
+    this.formspree.setLastName(form['lastName']);
     this.formspree.setMessage(form['message']);
     this.formspree.postData();
 
