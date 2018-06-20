@@ -16,16 +16,16 @@ export class FormspreeService {
   private message: string = `Project: POW2\n\nMessage from ${ this.fn } ${ this.ln } \n\n ${ this.message }`;
 
   //NEED GOLD ACCOUNT TO AJAX POST
-  private url: string = 'http://formspree.io/info@bscs.org';
+  private url: string = 'https://formspree.io/info@bscs.org';
 
   setEmail = (email) => { this.email = email };
   setfn = (fn) => { this.fn = fn };
   setln = (ln) => { this.ln = ln };
   setMessage = (message) => { this.message = message };
   getStatus = () => { return this.status };
-  
+
   postData = () => {
-    const data =  { 
+    const data =  {
       email: this.email,
       message: this.message
     }
@@ -40,5 +40,4 @@ export class FormspreeService {
       }
     );
   }
-} 
-
+}
