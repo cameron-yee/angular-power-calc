@@ -26,4 +26,10 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('should move the screen to 0, 180', async(() => {
+  //   spyOn(component.contact, 'click');
+  //   component.contact.onClick();
+  //   expect(window.scrollX === 0 && window.scrollY === 180);
+  // }));
 });

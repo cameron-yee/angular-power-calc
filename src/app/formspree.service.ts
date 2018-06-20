@@ -16,7 +16,7 @@ export class FormspreeService {
   private message: string = `Project: POW2\n\nMessage from ${ this.fn } ${ this.ln } \n\n ${ this.message }`;
 
   //NEED GOLD ACCOUNT TO AJAX POST
-  private url: string = 'http://formspree.io/cyee@bscs.org';
+  private url: string = 'http://formspree.io/info@bscs.org';
 
   setEmail = (email) => { this.email = email };
   setfn = (fn) => { this.fn = fn };

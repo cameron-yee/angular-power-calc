@@ -31,4 +31,10 @@ describe('CalculatorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call determineShowTime()', () => {
+    let dst: any = jasmine.createSpy('determineShowTime');
+    component.ngAfterViewInit();
+    expect(dst).toHaveBeenCalled();
+  })
 });
