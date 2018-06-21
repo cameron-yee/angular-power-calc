@@ -39,13 +39,12 @@ export class FormspreeService {
       data,
       {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})}
     )
-      .subscribe(res => {
-        console.log(res);
-        this.status = true;
-      },
-      (err: HttpErrorResponse) => {
-        console.log(err);
-      }
-    );
+    .subscribe(res => {
+      console.log(res);
+      return this.status = true;
+    },
+    (err: HttpErrorResponse) => {
+      console.log(err);
+    });
   }
 }
