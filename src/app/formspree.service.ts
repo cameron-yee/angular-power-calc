@@ -45,6 +45,7 @@ export class FormspreeService {
       },
       (err: HttpErrorResponse) => {
         console.log(err);
+        this.status = false;
       }
     );
   }

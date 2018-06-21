@@ -45,15 +45,21 @@ export class ContactComponent {
     this.fail.nativeElement.classList.add('show');
   }
 
+  formResponseReceived = new Promise((resolve, reject) => {
+    this.formspree.postData();
+    resolve();
+  });
+
   submitForm(form: any): void {
     this.formspree.setEmail(form.email_group['email']);
     this.formspree.setFirstName(form['firstName']);
     this.formspree.setLastName(form['lastName']);
     this.formspree.setMessage(form['message']);
-    this.formspree.postData();
 
-    const status = this.formspree.getStatus();
-    status === true ? this.showSuccessMessage() : this.showFailMessage();
+    this.formResponseReceived.then(() => {
+      const status = this.formspree.getStatus();
+      status === true ? this.showSuccessMessage() : this.showFailMessage();
+    });
   }
 
   emailMatch(control: AbstractControl): {[key: string]: boolean} {
