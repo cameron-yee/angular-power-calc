@@ -70,7 +70,7 @@ export class ContactComponent {
 
 
 successMessage = "Your message has been received!";
-failMessage = "Message did not send.  An error in the server occured.  Try again later.";
+failMessage = "Message did not send.  An error in the server occurred.  Try again later.";
 // errorFirstName = response.errors.firstName;
 // errorLastName = response.errors.lastName;
 // errorEmail = response.errors.email;
