@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { fbind } from 'q';
-import { AbstractClassPart } from '@angular/compiler/src/output/output_ast';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 import { FormspreeService } from '../formspree.service';
+import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -45,23 +43,31 @@ export class ContactComponent {
     this.fail.nativeElement.classList.add('show');
   }
 
-
   submitForm(form: any): void {
     this.formspree.setEmail(form.email_group['email']);
     this.formspree.setFirstName(form['firstName']);
     this.formspree.setLastName(form['lastName']);
     this.formspree.setMessage(form['message']);
-
-    let formResponseReceived = new Promise((resolve, reject) => {
-      this.formspree.postData();
-      resolve();
-    });
-
-    formResponseReceived.then(() => {
-      const status = this.formspree.getStatus();
+    this.formspree.postData();
+    
+    this.formspree.status_observer.subscribe(status => {
+      console.log(status);
       status === true ? this.showSuccessMessage() : this.showFailMessage();
     });
-  }
+  };
+  //   let formResponseReceived = new Promise((resolve) => {
+  //     this.formspree.postData();
+  //     resolve();
+  //   });
+
+  //   formResponseReceived.then(() => {
+  //     let status = this.formspree.getStatus();
+  //     console.log(status);
+  //     return status;
+  //   }).then((status) => {
+  //     status === true ? this.showSuccessMessage() : this.showFailMessage();
+  //   });
+  // }
 
   emailMatch(control: AbstractControl): {[key: string]: boolean} {
     const email = control.get('email');

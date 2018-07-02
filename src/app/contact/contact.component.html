@@ -26,7 +26,7 @@
         {{ errorMessage }}
       </div> -->
       <!-- binding component attribute -->
-      <form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value) && showSuccessMessage()">
+      <form #form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value); form.reset()">
         <div class="form-group">
           <label for="firstName">First name</label>
           <input class="form-control" id="firstName" placeholder="" formControlName="firstName">
