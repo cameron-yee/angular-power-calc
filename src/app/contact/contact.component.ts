@@ -52,7 +52,7 @@ export class ContactComponent {
     this.formspree.setMessage(form['message']);
     this.formspree.postData();
 
-    const status = this.formspree.getStatus();
+    let status = this.formspree.getStatus();
     status === true ? this.showSuccessMessage() : this.showFailMessage();
   }
 
@@ -69,11 +69,11 @@ export class ContactComponent {
   }
 
 
-successMessage = "Your message has been received!";
-failMessage = "Message did not send.  An error in the server occurred.  Try again later.";
-// errorFirstName = response.errors.firstName;
-// errorLastName = response.errors.lastName;
-// errorEmail = response.errors.email;
-// errorValidateEmail = response.errors.validateEmail;
-// errorMessage = response.errors.message;
+  successMessage = "Your message has been received!";
+  failMessage = "Message did not send.  An error in the server occurred.  Try again later.";
+  // errorFirstName = response.errors.firstName;
+  // errorLastName = response.errors.lastName;
+  // errorEmail = response.errors.email;
+  // errorValidateEmail = response.errors.validateEmail;
+  // errorMessage = response.errors.message;
 }
