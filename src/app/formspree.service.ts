@@ -26,7 +26,8 @@ export class FormspreeService {
   getStatus = () => { return this.status };
 
   postData = () => {
-    let data = `name=${this.lastName + ', ' + this.firstName}&email=${this.email}&message=${this.message}`;
+    let data = `name=${this.lastName}, ${this.firstName}&email=${this.email}&message=${this.message}`;
+    console.log(data);
 
     this.http.post(
       this.url,

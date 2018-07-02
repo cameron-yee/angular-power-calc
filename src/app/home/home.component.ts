@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('calculatorbutton') calculatorbutton: any;
 
   constructor() { }
 
   ngOnInit() {
+    this.calculatorbutton.nativeElement.addEventListener('click',() => window.scroll(0,180));
   }
 
 }

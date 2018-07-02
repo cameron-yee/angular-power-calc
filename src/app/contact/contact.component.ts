@@ -45,10 +45,6 @@ export class ContactComponent {
     this.fail.nativeElement.classList.add('show');
   }
 
-  formResponseReceived = new Promise((resolve, reject) => {
-    this.formspree.postData();
-    resolve();
-  });
 
   submitForm(form: any): void {
     this.formspree.setEmail(form.email_group['email']);
@@ -56,7 +52,12 @@ export class ContactComponent {
     this.formspree.setLastName(form['lastName']);
     this.formspree.setMessage(form['message']);
 
-    this.formResponseReceived.then(() => {
+    let formResponseReceived = new Promise((resolve, reject) => {
+      this.formspree.postData();
+      resolve();
+    });
+
+    formResponseReceived.then(() => {
       const status = this.formspree.getStatus();
       status === true ? this.showSuccessMessage() : this.showFailMessage();
     });
