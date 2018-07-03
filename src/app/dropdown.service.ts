@@ -12,39 +12,39 @@ export class DropdownService {
     this.icc_state = state;
   }
 
-  getIccState() {
+  getIccState(): string {
     return this.icc_state;
   }
 
-  setIccGrades(grades: string[]) {
+  setIccGrades(grades: string[]): void {
     this.icc_grades = grades;
   }
 
-  getIccGrades() {
+  getIccGrades(): string[] {
     return this.icc_grades;
   }
 
-  setr2State(state: string) {
+  setr2State(state: string): void {
     this.r2_state = state;
   }
 
-  getr2State() {
+  getr2State(): string {
     return this.r2_state;
   }
 
-  setr2Grades(grades: string[]) {
+  setr2Grades(grades: string[]): void {
     this.r2_grades = grades;
   }
 
-  getr2Grades() {
+  getr2Grades(): string[] {
     return this.r2_grades;
   }
 
-  hideDomain(show_domain: boolean) {
+  hideDomain(show_domain: boolean): void {
     this.show_domain = show_domain;
   }
 
-  gethideDomain() {
+  gethideDomain(): boolean {
     return this.show_domain;
   }
 }

@@ -13,15 +13,15 @@ export class FormspreeService {
 
   constructor() { }
 
-  setEmail = (email): void => { this.email = email };
+  setEmail = (email: string): void => { this.email = email };
   getEmail = (): string => { return this.email };
 
-  setFirstName = (firstName): void => { this.firstName = firstName };
+  setFirstName = (firstName: string): void => { this.firstName = firstName };
   getFirstName = (): string => { return this.firstName };
 
-  setLastName = (lastName): void => { this.lastName = lastName };
+  setLastName = (lastName: string): void => { this.lastName = lastName };
   getLastName = (): string => { return this.lastName };
 
-  setMessage = (message): void => { this.message = message };
+  setMessage = (message: string): void => { this.message = message };
   getMessage = (): string => { return this.message };
 }

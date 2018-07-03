@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MessagesService } from '../messages.service';
 
 @Component({
@@ -6,13 +6,10 @@ import { MessagesService } from '../messages.service';
   templateUrl: './submit-button.component.html',
   styleUrls: ['./submit-button.component.css']
 })
-export class SubmitButtonComponent implements OnInit {
+export class SubmitButtonComponent {
   @ViewChild('submit') submit: any;
 
   constructor(private messagesService: MessagesService) { }
-
-  ngOnInit() {
-  }
 
   ngAfterViewInit() {
       const table4 = {
@@ -497,7 +494,7 @@ export class SubmitButtonComponent implements OnInit {
           },
       };
 
-    let r2Messages = () => {
+    let r2Messages = (): void => {
       try {
         let values: Object = this.messagesService.getValues();
         let r2_covariate: string = values['r2-covariate'];
@@ -535,6 +532,7 @@ export class SubmitButtonComponent implements OnInit {
           if(eval(r2_messages_values[i]) == undefined) {
             r2_message = `There is no data for ${r2_grades}th Grade ${r2_state} r2`
           } else {
+            //TODO: find solution to remove eval()
             r2_message = `${r2_grades}th Grade ${r2_state} r2: ${eval(r2_messages_values[i])}`;
           }
           r2_messages[i] = r2_message;
@@ -546,7 +544,7 @@ export class SubmitButtonComponent implements OnInit {
       }
     }
 
-    let iccMessages = () => {
+    let iccMessages = (): void => {
       try {
         let values: Object = this.messagesService.getValues();
         let icc_impact: string = values['icc-impact'];
@@ -561,12 +559,12 @@ export class SubmitButtonComponent implements OnInit {
           if(eval(icc_messages_values[i]) == undefined) {
             icc_message = `There is no data for ${icc_grades}th Grade ${icc_state} ICC`
           } else {
+            //TODO: find solution to remove eval()
             icc_message = `${icc_grades}th Grade ${icc_state} ICC: ${eval(icc_messages_values[i])}`;
           }
           icc_messages[i] = icc_message;
         }
         this.messagesService.setIccMessages(icc_messages);
-        // let lookup = eval('r2_messages_values[0]');
       } catch(TypeError) {
         console.log(TypeError);
       }

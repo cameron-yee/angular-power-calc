@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, ViewChild, ViewChildren, QueryList} from '@angular/core';
+import { Component, Input, AfterViewInit, ViewChild, ViewChildren, QueryList} from '@angular/core';
 import { MessagesService } from '../messages.service';
 
 @Component({
@@ -19,25 +19,20 @@ export class DropdownComponent implements AfterViewInit {
   @Input() p?: string;
   @Input() items: string[];
 
-  ngOnInit() {
-  }
-
   ngAfterViewInit() {
     //Sets dropdown span text to selected value
-    let setSelection: any = (item_text, item_id_raw) => {
+    let setSelection: any = (item_text: string, item_id_raw: string) => {
       this.textspan.nativeElement.innerText = item_text;
       
-      let item_id = item_id_raw.slice(0,-2);
-      let icc_dropdown_order: string[] = ['icc-impact','icc-state','icc-grades'];
-      let r2_dropdown_order: string[] = ['r2-covariate','r2-domain','r2-impact','r2-state','r2-grades'];
+      let item_id: string = item_id_raw.slice(0,-2);
 
       this.messagesService.pushValue(item_id, item_text);
     }
 
     //Adds click eventListener to each dropdown clickable item
     for(let i = 0; i < this.dropdown_items_query.length; i++) {
-      let item_text = this.dropdown_items_query.toArray()[i].nativeElement.innerText;
-      let item_id_raw = this.dropdown_items_query.toArray()[i].nativeElement.id;
+      let item_text: string = this.dropdown_items_query.toArray()[i].nativeElement.innerText;
+      let item_id_raw: string = this.dropdown_items_query.toArray()[i].nativeElement.id;
       this.dropdown_items_query.toArray()[i].nativeElement.addEventListener('click', function() {setSelection(item_text, item_id_raw)});
     }
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MessagesService } from '../messages.service';
 
 @Component({
@@ -6,15 +6,12 @@ import { MessagesService } from '../messages.service';
   templateUrl: './results-box.component.html',
   styleUrls: ['./results-box.component.css']
 })
-export class ResultsBoxComponent implements OnInit {
+export class ResultsBoxComponent {
 
   constructor(private messagesService: MessagesService) { }
 
-  ngOnInit() {
-  }
-
   ngAfterViewInit() {
-    let displayMessages = () => {
+    let displayMessages = (): void => {
       let clicked: boolean = this.messagesService.getClicked();
       if(clicked) {
         let icc_messages: string[] = this.messagesService.getIccMessages();
@@ -24,7 +21,6 @@ export class ResultsBoxComponent implements OnInit {
       }
     }
 
-    // this.submit.nativeElement.addEventListener('click', displayMessages);
     document.body.addEventListener('click', displayMessages);
   }
 
