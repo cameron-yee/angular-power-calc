@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormspreeService } from '../formspree.service';
-import { Subscription } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
+import {  } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -12,10 +12,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ContactComponent {
   @ViewChild('success') success: any;
   @ViewChild('fail') fail: any;
+  @ViewChild('form') form: any;
 
   contactForm : FormGroup;
 
-  constructor(private formspree: FormspreeService, fb: FormBuilder) {
+  constructor(private formspree: FormspreeService, fb: FormBuilder, private http: HttpClient) {
 
     this.contactForm = fb.group({
       'firstName' : [null, Validators.required],
@@ -28,47 +29,62 @@ export class ContactComponent {
     });
   }
 
-  ngAfterViewInit() {
-  }
-
-  showSuccessMessage = () => {
+  showSuccessMessage = (): void => {
     window.scroll(0, 180);
     this.success.nativeElement.classList.remove('hidden');
     this.success.nativeElement.classList.add('show');
   }
 
-  showFailMessage = () => {
+  showFailMessage = (): void => {
     window.scroll(0, 180);
     this.fail.nativeElement.classList.remove('hidden');
     this.fail.nativeElement.classList.add('show');
   }
 
-  submitForm(form: any): void {
-    this.formspree.setEmail(form.email_group['email']);
-    this.formspree.setFirstName(form['firstName']);
-    this.formspree.setLastName(form['lastName']);
-    this.formspree.setMessage(form['message']);
-    this.formspree.postData();
-    
-    this.formspree.status_observer.subscribe(status => {
-      console.log(status);
-      status === true ? this.showSuccessMessage() : this.showFailMessage();
+  getData = (): string => {
+    let first_name: string = this.formspree.getFirstName();
+    let last_name: string = this.formspree.getLastName();
+    let email: string = this.formspree.getEmail();
+    let message: string = this.formspree.getMessage();
+
+    let data: string = `name=${last_name}, ${first_name}&email=${email}&message=${message}`;
+    return data;
+  }
+
+  postData = (form: any): void => {
+    let url: string = 'https://formspree.io/mdzzqblm'
+    let data: string = this.getData();
+
+    this.http.post(
+      url,
+      data,
+      {headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})}
+    )
+      .subscribe(res => {
+        console.log(res);
+        form.reset();
+        this.showSuccessMessage();
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+        this.showFailMessage();
+      },
+    );
+  }
+
+  submitForm(form_values: any, form: FormGroup): void {
+    let form_data_promise = new Promise((resolve) => {
+      this.formspree.setEmail(form_values.email_group['email']);
+      this.formspree.setFirstName(form_values['firstName']);
+      this.formspree.setLastName(form_values['lastName']);
+      this.formspree.setMessage(form_values['message']);
+      resolve();
+    })
+    form_data_promise.then((): void => {
+      this.postData(form);
     });
-  };
-  //   let formResponseReceived = new Promise((resolve) => {
-  //     this.formspree.postData();
-  //     resolve();
-  //   });
-
-  //   formResponseReceived.then(() => {
-  //     let status = this.formspree.getStatus();
-  //     console.log(status);
-  //     return status;
-  //   }).then((status) => {
-  //     status === true ? this.showSuccessMessage() : this.showFailMessage();
-  //   });
-  // }
-
+  }
+    
   emailMatch(control: AbstractControl): {[key: string]: boolean} {
     const email = control.get('email');
     const confirm_email = control.get('verifyEmail');
@@ -76,17 +92,11 @@ export class ContactComponent {
     if(email.value === confirm_email.value) {
       return null;
     }
-    // this.verify_email.nativeElement.classList += 'ng-invalid';
+
     confirm_email.setErrors({'invalid': true});
     return {invalid: true};
   }
 
-
   successMessage = "Your message has been received!";
   failMessage = "Message did not send.  An error in the server occurred.  Try again later.";
-  // errorFirstName = response.errors.firstName;
-  // errorLastName = response.errors.lastName;
-  // errorEmail = response.errors.email;
-  // errorValidateEmail = response.errors.validateEmail;
-  // errorMessage = response.errors.message;
 }

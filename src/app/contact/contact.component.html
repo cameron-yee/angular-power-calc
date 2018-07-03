@@ -10,23 +10,8 @@
       <div class="alert alert-danger hidden" role="alert" #fail>
         {{ failMessage }}
       </div>
-      <!-- <div *ngIf="firstName.invalid" class="alert alert-danger" role="alert">
-        {{ errorFirstName }}
-      </div>
-      <div class="alert alert-danger" role="alert">
-        {{ errorLastName }}
-      </div>
-      <div class="alert alert-danger" role="alert">
-        {{ errorEmail }}
-      </div>
-      <div class="alert alert-danger" role="alert">
-        {{ errorValidateEmail }}
-      </div>
-      <div class="alert alert-danger" role="alert">
-        {{ errorMessage }}
-      </div> -->
-      <!-- binding component attribute -->
-      <form #form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value); form.reset()">
+
+      <form #form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value, contactForm)">
         <div class="form-group">
           <label for="firstName">First name</label>
           <input class="form-control" id="firstName" placeholder="" formControlName="firstName">
@@ -68,19 +53,10 @@
         </div>
 
         <button type="submit" value="Submit" class="btn btn-primary form-submit" [disabled]="!contactForm.valid">Submit</button>
-
-        <!-- {{ contactForm.$valid }}
-        {{ formData.firstName }}
-        {{ formData.lastName }}
-        {{ formData.email }}
-        {{ formData.verifyEmail }}
-        {{ formData.message }}
-
-        {{ formData }} -->
-
       </form>
     </div>
   </div>
+
   <div class="col col-lg-5 order-lg-1" style="margin-bottom: 2rem;">
     <h2>Contact Us</h2>
     <hr />
@@ -106,15 +82,5 @@
         <i class="fa fa-twitter social footer-contact"></i>
       </span>
     </a>
-    <!-- <a style="text-decoration: none;" target="_blank" href="https://www.linkedin.com/company/" class="sociala">
-      <span>
-        <i class="fa fa-linkedin social"></i>
-      </span>
-    </a>
-    <a style="text-decoration: none;" target="_blank" href="https://plus.google.com//posts" class="sociala">
-      <span>
-        <i class="fa fa-google-plus social"></i>
-      </span>
-    </a> -->
   </div>
 </div>
