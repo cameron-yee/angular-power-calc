@@ -528,7 +528,7 @@ export class SubmitButtonComponent {
         let r2_messages: string[] = [];
 
         //TODO: use Function instead of eval
-        //let getValue = new Function('value', 'return value');
+        // let getValue = new Function('value', 'return (value)');
 
         for(let i: number = 0; i < r2_messages_values.length; i++) {
           let r2_message: string;
@@ -559,11 +559,11 @@ export class SubmitButtonComponent {
         let icc_messages: string[] = [];
 
         //TODO: use Function instead of eval
-        // let getValue = new Function('value', 'return value');
+        // let getValue = new Function('value', 'return (value)');
 
         for(let i: number = 0; i < icc_messages_values.length; i++) {
           let icc_message: string;
-          if(eval(icc_messages_values[1]) == undefined) {
+          if(eval(icc_messages_values[i]) == undefined) {
             if(icc_impact === '2-level') {
               icc_message = `There is no data for ${icc_grades}th Grade ${icc_state} ICC`
             } else {
