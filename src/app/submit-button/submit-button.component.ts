@@ -69,9 +69,9 @@ export class SubmitButtonComponent {
               grade10se1: 0.008,
               grade10iccl3: 0.055,
               grade10se2: 0.008,
-              grade11iccl2: 0.136,
+              grade11iccl2: 0.127,
               grade11se1: 0.008,
-              grade11iccl3: 0.055,
+              grade11iccl3: 0.059,
               grade11se2: 0.008,
           },
           wisconsin: {
@@ -527,13 +527,16 @@ export class SubmitButtonComponent {
 
         let r2_messages: string[] = [];
 
-        for(let i: any = 0; i < r2_messages_values.length; i++) {
+        //TODO: use Function instead of eval
+        //let getValue = new Function('value', 'return value');
+
+        for(let i: number = 0; i < r2_messages_values.length; i++) {
           let r2_message: string;
           if(eval(r2_messages_values[i]) == undefined) {
-            r2_message = `There is no data for ${r2_grades}th Grade ${r2_state} r2`
+            r2_message = `There is no data for ${r2_grades}th Grade ${r2_state} R2 L${i + 1}`
           } else {
             //TODO: find solution to remove eval()
-            r2_message = `${r2_grades}th Grade ${r2_state} r2: ${eval(r2_messages_values[i])}`;
+            r2_message = `${r2_grades}th Grade ${r2_state} R2 L${i + 1}: ${eval(r2_messages_values[i])}`;
           }
           r2_messages[i] = r2_message;
         }
@@ -554,13 +557,25 @@ export class SubmitButtonComponent {
         let icc_messages_values: string[] = (icc_impact === '2-level') ? [`table4.${icc_state.toLowerCase()}.grade${icc_grades}icc`] : [`table5.${icc_state.toLowerCase()}.grade${icc_grades}iccl2`,`table5.${icc_state.toLowerCase()}.grade${icc_grades}iccl3`];
 
         let icc_messages: string[] = [];
-        for(let i: any = 0; i < icc_messages_values.length; i++) {
+
+        //TODO: use Function instead of eval
+        // let getValue = new Function('value', 'return value');
+
+        for(let i: number = 0; i < icc_messages_values.length; i++) {
           let icc_message: string;
-          if(eval(icc_messages_values[i]) == undefined) {
-            icc_message = `There is no data for ${icc_grades}th Grade ${icc_state} ICC`
+          if(eval(icc_messages_values[1]) == undefined) {
+            if(icc_impact === '2-level') {
+              icc_message = `There is no data for ${icc_grades}th Grade ${icc_state} ICC`
+            } else {
+              icc_message = `There is no data for ${icc_grades}th Grade ${icc_state} ICC L${i + 2}`
+            }
           } else {
             //TODO: find solution to remove eval()
-            icc_message = `${icc_grades}th Grade ${icc_state} ICC: ${eval(icc_messages_values[i])}`;
+            if(icc_impact === '2-level') {
+              icc_message = `${icc_grades}th Grade ${icc_state} ICC: ${eval(icc_messages_values[i])}`;
+            } else {
+              icc_message = `${icc_grades}th Grade ${icc_state} ICC L${i + 2}: ${eval(icc_messages_values[i])}`;
+            }
           }
           icc_messages[i] = icc_message;
         }
