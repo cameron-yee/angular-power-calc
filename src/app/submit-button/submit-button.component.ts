@@ -498,26 +498,28 @@ export class SubmitButtonComponent {
       try {
         let values: Object = this.messagesService.getValues();
         let r2_covariate: string = values['r2-covariate'];
-        let r2_impact: string = values['r2-impact'];
+        //Only one impact
+        let r2_impact: string = values['icc-impact'];
         let r2_domain: string = values['r2-domain'];
-        let r2_state: string = values['r2-state'];
-        let r2_grades: string = values['r2-grades'];
+        //Same as icc grades, only 1 grades and state variable now
+        let r2_state: string = values['icc-state'];
+        let r2_grades: string = values['icc-grades'];
 
         let r2_messages_values: string[] = [];
 
-        if(r2_covariate === 'Demo Only') {
+        if(r2_covariate === 'Student-level demographics') {
           if(r2_impact === '2-level') {
             r2_messages_values = [`table6.twolevelhlm.${r2_state.toLowerCase()}.grade${r2_grades}r2l1`,`table6.twolevelhlm.${r2_state.toLowerCase()}.grade${r2_grades}r2l2`];
           } else {
             r2_messages_values = [`table6.threelevelhlm.${r2_state.toLowerCase()}.grade${r2_grades}r2l1`,`table6.threelevelhlm.${r2_state.toLowerCase()}.grade${r2_grades}r2l2`,`table6.threelevelhlm.${r2_state.toLowerCase()}.grade${r2_grades}r2l3`];
           }
-        } else if(r2_covariate === 'School Level Pretest') {
+        } else if(r2_covariate === 'School-level pretest') {
           if(r2_impact === '2-level') {
             r2_messages_values = [`table7.twolevelhlm.${r2_state.toLowerCase()}.${r2_domain.toLowerCase()}.grade${r2_grades}r2l2`];
           } else {
             r2_messages_values = [`table7.threelevelhlm.${r2_state.toLowerCase()}.${r2_domain.toLowerCase()}.grade${r2_grades}r2l2`,`table7.threelevelhlm.${r2_state.toLowerCase()}.${r2_domain.toLowerCase()}.grade${r2_grades}r2l3`];
           }
-        } else if(r2_covariate === 'Individual Level Pretest') {
+        } else if(r2_covariate === 'Student-level pretest') {
           if(r2_impact === '2-level') {
             r2_messages_values = [`table8.twolevelhlm.${r2_state.toLowerCase()}.${r2_domain.toLowerCase()}.grade${r2_grades}r2l1`,`table8.twolevelhlm.${r2_state.toLowerCase()}.${r2_domain.toLowerCase()}.grade${r2_grades}r2l2`];
           } else {
@@ -527,7 +529,7 @@ export class SubmitButtonComponent {
 
         let r2_messages: string[] = [];
 
-        //TODO: use Function instead of eval
+        // TODO: use Function instead of eval
         // let getValue = new Function('value', 'return (value)');
 
         for(let i: number = 0; i < r2_messages_values.length; i++) {

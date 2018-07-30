@@ -56,17 +56,16 @@ export class CalculatorComponent implements AfterViewInit {
 
     determineShowTime();
 
-    const icc_state: HTMLElement = document.getElementById('icc-state');
-    const icc_grades: HTMLElement = document.getElementById('icc-grades');
-    const r2_state: HTMLElement = document.getElementById('r2-state');
-    const r2_grades: HTMLElement = document.getElementById('r2-grades');
+    // const icc_state: HTMLElement = document.getElementById('icc-state');
+    const state: HTMLElement = document.getElementById('icc-state');
+    const grades: HTMLElement = document.getElementById('icc-grades');
     const r2_covariate: HTMLElement = document.getElementById('r2-covariate');
     const r2_domain: HTMLElement = document.getElementById('r2-domain');
     const default_grades: string[] = ['4','5','6','7','8','9','10','11'];
 
     //Adds/removes hidden class to grades without data
-    const limitIccGrades = (): any => {
-      let grades: string[] = this.dropdownService.getIccGrades();
+    const limitGrades = (): any => {
+      let grades: string[] = this.dropdownService.getGrades();
       for(let i = 0; i < 8; i++) {
         let current_id = document.getElementById(`icc-grades-${i}`);
         if(grades.includes(current_id.innerHTML)) {
@@ -77,64 +76,61 @@ export class CalculatorComponent implements AfterViewInit {
       }
     }
 
-    const limitr2Grades = (): any => {
-      let grades: string[] = this.dropdownService.getr2Grades();
-      for(let i = 0; i < 8; i++) {
-        let current_id = document.getElementById(`r2-grades-${i}`);
-        if(grades.includes(current_id.innerHTML)) {
-          current_id.classList.remove('hidden');
-        } else {
-          current_id.classList.add('hidden');
-        }
-      }
-    }
+    // const limitr2Grades = (): any => {
+    //   let grades: string[] = this.dropdownService.getr2Grades();
+    //   for(let i = 0; i < 8; i++) {
+    //     let current_id = document.getElementById(`r2-grades-${i}`);
+    //     if(grades.includes(current_id.innerHTML)) {
+    //       current_id.classList.remove('hidden');
+    //     } else {
+    //       current_id.classList.add('hidden');
+    //     }
+    //   }
+    // }
 
-    const set_icc_grades = (selected_state): void => {
+    const setGrades = (selected_state): void => {
       if(selected_state === 'Michigan') {
-        this.dropdownService.setIccGrades(['5','8','11']);
+        this.dropdownService.setGrades(['5','8','11']);
       } else if(selected_state === 'Texas') {
-        this.dropdownService.setIccGrades(['5','8','10','11']);
+        this.dropdownService.setGrades(['5','8','10','11']);
       } else if(selected_state === 'Wisconsin') {
-        this.dropdownService.setIccGrades(['4','8','10']);
+        this.dropdownService.setGrades(['4','8','10']);
       } else {
-        this.dropdownService.setIccGrades(default_grades);
+        this.dropdownService.setGrades(default_grades);
       }
 
-      limitIccGrades();
+      limitGrades();
     }
 
-    const set_icc_state = (): void => {
-      const selected_state = icc_state.querySelector('span').innerHTML;
-      this.dropdownService.setIccState(selected_state);
-      set_icc_grades(selected_state);
+    const setState = (): void => {
+      const selected_state = state.querySelector('span').innerHTML;
+      this.dropdownService.setState(selected_state);
+      setGrades(selected_state);
     }
 
-    const set_r2_grades = (selected_state): void => {
-      if(selected_state === 'Michigan') {
-        this.dropdownService.setr2Grades(['5','8','11']);
-      } else if(selected_state === 'Texas') {
-        this.dropdownService.setr2Grades(['5','8','10','11']);
-      } else if(selected_state === 'Wisconsin') {
-        this.dropdownService.setr2Grades(['4','8','10']);
-      } else {
-        this.dropdownService.setr2Grades(default_grades);
-      }
+    // const set_r2_grades = (selected_state): void => {
+    //   if(selected_state === 'Michigan') {
+    //     this.dropdownService.setr2Grades(['5','8','11']);
+    //   } else if(selected_state === 'Texas') {
+    //     this.dropdownService.setr2Grades(['5','8','10','11']);
+    //   } else if(selected_state === 'Wisconsin') {
+    //     this.dropdownService.setr2Grades(['4','8','10']);
+    //   } else {
+    //     this.dropdownService.setr2Grades(default_grades);
+    //   }
 
-      limitr2Grades();
-    }
+    //   limitr2Grades();
+    // }
 
     //Gets the text of the selected state every time so the grades are changed if the state is changed
-    const set_r2_state = (): void => {
-      const selected_state = r2_state.querySelector('span').innerHTML;
-      this.dropdownService.setr2State(selected_state);
-      set_r2_grades(selected_state);
-    }
+    // const set_r2_state = (): void => {
+    //   const selected_state = r2_state.querySelector('span').innerHTML;
+    //   this.dropdownService.setr2State(selected_state);
+    //   set_r2_grades(selected_state);
+    // }
 
     //When either state or grades dropdown is clicked, the selected state is set and the grades for those states that don't have data are hidden under the grades dropdown
-    icc_grades.addEventListener('click', set_icc_state);
-    r2_grades.addEventListener('click', set_r2_state);
-    icc_state.addEventListener('click', set_icc_state);
-    r2_state.addEventListener('click', set_r2_state);
+    state.addEventListener('click', setState);
 
     const hideDomain = (): void => {
       r2_domain.classList.add('hidden');
@@ -147,7 +143,7 @@ export class CalculatorComponent implements AfterViewInit {
     }
     const toggleDomain = (): void => {
       const cov_value: string = r2_covariate.querySelector('span').innerHTML;
-      if(cov_value === 'Demo Only') {
+      if(cov_value === 'Student-level demographics') {
         // this.dropdownService.hideDomain(true);
         hideDomain();
       } else {

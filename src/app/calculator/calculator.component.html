@@ -19,18 +19,15 @@
       <!--Begin Dropdown Section-->
       <p>Do you plan on using a 2-level <sup><a data-toggle="tooltip" data-placement="top" title="A 2 level impact model is ..."><i class="fa fa-info-circle" aria-hidden="true"></i></a></sup> or a 3-level <sup><a data-toggle="tooltip" data-placement="top" title="A 3 level impact model is ..."><i class="fa fa-info-circle" aria-hidden="true"></i></a></sup> impact model?</p>
       <app-dropdown id="icc-impact" [items]="['2-level', '3-level']"></app-dropdown>
-      <app-dropdown id="icc-state" p="Which state are you from?" [items]="['Michigan','Texas','Wisconsin']"></app-dropdown>
-      <app-dropdown id="icc-grades" p="What grades are you teaching?" [items]="['4','5','6','7','8','9','10','11']"></app-dropdown>
+      <app-dropdown id="icc-state" p="Which state is most similar (demographically) to your planned study context?" [items]="['Michigan','Texas','Wisconsin']"></app-dropdown>
+      <app-dropdown id="icc-grades" p="What student grade levels are being targeted by the intervention?" [items]="['4','5','6','7','8','9','10','11']"></app-dropdown>
 
       <div class="r2">
         <h2>R<sup>2</sup></h2>
       </div>
 
-      <app-dropdown id="r2-covariate" p="What type of covariate are you using?" [items]="['Demo Only','School Level Pretest', 'Individual Level Pretest']"></app-dropdown>
-      <app-dropdown id="r2-domain" p="What domain?" [items]="['Math','Reading','Science']"></app-dropdown>
-      <app-dropdown id="r2-impact" p="Do you plan on using a 2-level or 3-level impact model?" [items]="['2-level','3-level']"></app-dropdown>
-      <app-dropdown id="r2-state" p="Which state are you from?" [items]="['Michigan','Texas','Wisconsin']"></app-dropdown>
-      <app-dropdown id="r2-grades" p="What grades are you teaching?" [items]="['4','5','6','7','8','9','10','11']"></app-dropdown>
+      <app-dropdown id="r2-covariate" p="What type of covariate are you using?" [items]="['Student-level demographics','School-level pretest', 'Student-level pretest']"></app-dropdown>
+      <app-dropdown id="r2-domain" p="In what academic domain is your outcome measure?" [items]="['Math','Reading','Science']"></app-dropdown>
     </div>
     <!--End Section-->
     <div class="col-xs-12 col-md-8">
