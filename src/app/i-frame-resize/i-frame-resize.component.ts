@@ -18,7 +18,8 @@ export class IFrameResizeComponent implements AfterViewInit {
     resizer.iframeResizer();
 
     const reload: any = (elem: any) => {
-      this.frame.nativeElement.contentWindow.location.reload();
+      const f = this.frame.nativeElement;
+      f.src = f.src;
     }
 
     this.reload.nativeElement.addEventListener('click', () => { reload() });
