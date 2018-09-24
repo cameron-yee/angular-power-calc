@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 
 // import * as $ from 'jquery';
 
@@ -11,11 +11,17 @@ import * as resizer from 'iframe-resizer';
   styleUrls: ['./i-frame-resize.component.css']
 })
 export class IFrameResizeComponent implements AfterViewInit {
-
-  constructor() { }
+  @ViewChild('reload') reload: any; 
+  @ViewChild('frame') frame: any; 
 
   ngAfterViewInit() {
     resizer.iframeResizer();
+
+    const reload: any = (elem: any) => {
+      this.frame.nativeElement.contentWindow.location.reload();
+    }
+
+    this.reload.nativeElement.addEventListener('click', () => { reload() });
   }
 
 }
